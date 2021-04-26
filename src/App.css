@@ -1,7 +1,24 @@
 .parallax{
-  background-position: fixed;
+  min-height: 600px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
-  height: 500px;
+}
+#img1{
+  background-image: url('./img/img-03.jpg');
+}
+#img2{
+  background-image: url('./img/img-04.jpg');
+}
+.parallax div{
+  position: absolute;
+  top: 30%;
+  margin-left: 50px;
+  text-align: center;
+  color: white;
+  width: 45%;
+  font-family:initial;
 }
 #main-button:hover{
   background-color: white;
@@ -13,21 +30,34 @@
   margin-top: 30px;
 }
 .frame1{
-  /* border-top-color: #f5a681;
-  border-left-color: #f5a681;
-  border-right-color: #c26b3f;
-  border-bottom-color: #c26b3f;
+  /* border-top-color: #c5bfbf;
+  border-left-color: #b4b1b1;
+  border-right-color: black;
+  border-bottom-color:black;
   border-width: 10px;
   border-style: inset; */
-  border: #c26b3f 10px solid;
-  outline: #532c18 10px inset;
-  margin:50px 20px
+ 
+	
+	background: #fff;
+	overflow: hidden;
+  /* border: #c26b3f 10px solid; */
+  /* outline: #532c18 5px inset; */
+  /* margin:50px 20px */
 }
 .frame1 img{
-  border:white 10px solid;
+  /* border:white 10px solid; */
+  -webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.frame1 img:hover{
+  -webkit-transform: scale(1.3);
+	transform: scale(1.3);
 }
 .gallery{
-  background: url('./img/wood-01.jpg') no-repeat center  fixed; 
+  /* background: url('./img/wood-01.jpg') no-repeat center  fixed;  */
+  background-color: white;
 }
 .filter{
   background-color: black;
@@ -75,10 +105,10 @@
 .footer{
   background-color: black;
   color:white;
-  padding: 50px;
+  padding: 10px;
 }
 .footer-content{
-  padding:'20px 50px'
+  padding:'10px 30px'
 }
 .footer-content a{
   font-size: 1.3em;
@@ -88,4 +118,40 @@
 .footer-content a:hover{
   color:teal;
   text-decoration: none;
+}
+.backLink{
+  padding-left: 20px;
+  border-left:rgb(231, 33, 76) 5px solid ;
+  /* border-bottom:rgb(231, 33, 76) 1px solid ; */
+}
+
+/* %%%%%%%%%%%%%%%%%%%%%%%5 Form Style $$$$$$$$$$$$$$$$$$$$$$$ */
+.container{
+  margin: auto;
+  width: 80;
+  margin-top: 30px;
+}
+.icon-button{
+  background-color: hsl(345, 95%, 43%);
+  padding: 5px 10px;
+  color: white;
+  margin: 10px;
+  border: none;
+  box-shadow: 3px 8px 16px 0px rgba(0,0,0,0.2);
+  position: relative;
+}
+.icon-button:hover{
+  bottom: 2px;
+}
+.title{
+  font-size: 1.2em;
+}
+.box{
+  border: 1px  rgba(27, 27, 27, 0.2) solid;
+  padding: 20px;
+  margin-top: 20px;
+}
+.card{
+  box-shadow:3px 8px 16px 0px rgba(0,0,0,0.2) ;
+  margin-bottom:50px;
 }
