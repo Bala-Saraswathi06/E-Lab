@@ -10,7 +10,7 @@ function Slider(props) {
     return (
         <div style={{ position: 'relative', bottom: '80px' }}>
             <Carousel >
-                <Carousel.Item>
+                <Carousel.Item  interval={1200} >
                     <img
                         style={{ height: 'auto', width: '100%' }}
                         className="d-block w-100"
@@ -22,7 +22,7 @@ function Slider(props) {
                         <Button id='main-button' variant='danger' size="lg" onClick={(e) => setLab('botany')}>View Botany Museum <i class="fa fa-angle-right" aria-hidden="true"></i> </Button>
                     </Carousel.Caption>
                 </Carousel.Item>
-                <Carousel.Item>
+                <Carousel.Item  interval={1200}  >
                     <img
                         style={{ height: 'auto', width: '100%' }}
                         className="d-block w-100"

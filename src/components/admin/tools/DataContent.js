@@ -45,21 +45,66 @@ export class DataContent extends Component {
     }
 
     render() {
-        const { name, mainContent,imageUrl, subContent } = this.state
+        const { name, mainContent,imageUrl, subContent, order, className, family, } = this.state
         console.log(imageUrl)
         return (
             <div className='box' >
                 <Row>
-                    <Col>
+                    <Col lg='6'>
                         <Form.Group  >
-                            <Form.Label > Species Name </Form.Label>
+                            <Form.Label > Scientific Name </Form.Label>
                             <Col>
                                 <Form.Control
-                                    style={{ width: '80%' }}
+                                    // style={{ width: '80%' }}
                                     type='text'
-                                    placeholder='Species Name'
+                                    placeholder='Scientific Name'
                                     name='name'
                                     value={name}
+                                    onChange={this.onChange}
+                                />
+                            </Col>
+                        </Form.Group>
+                    </Col>
+                    <Col lg='6'>
+                        <Form.Group  >
+                            <Form.Label > Class </Form.Label>
+                            <Col>
+                                <Form.Control
+                                    // style={{ width: '80%' }}
+                                    type='text'
+                                    placeholder='Class'
+                                    name='className'
+                                    value={className}
+                                    onChange={this.onChange}
+                                />
+                            </Col>
+                        </Form.Group>
+                    </Col>
+                    <Col lg='6'>
+                        <Form.Group  >
+                            <Form.Label > Order </Form.Label>
+                            <Col>
+                                <Form.Control
+                                    // style={{ width: '80%' }}
+                                    type='text'
+                                    placeholder='order'
+                                    name='order'
+                                    value={order}
+                                    onChange={this.onChange}
+                                />
+                            </Col>
+                        </Form.Group>
+                    </Col>
+                    <Col lg='6'>
+                        <Form.Group  >
+                            <Form.Label > Family </Form.Label>
+                            <Col>
+                                <Form.Control
+                                    // style={{ width: '80%' }}
+                                    type='text'
+                                    placeholder='Family'
+                                    name='family'
+                                    value={family}
                                     onChange={this.onChange}
                                 />
                             </Col>

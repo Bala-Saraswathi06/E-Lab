@@ -35,21 +35,11 @@ function Content(props) {
             <div style={{ backgroundColor: 'white', padding: '50px' }}>
                 <Row style={{ margin: 'auto', width: "90%", }}>
                     <Col lg='6'>
-                        <Carousel >
-                            {/* {array.map(()=>{ */}
-                            <Carousel.Item>
-                                <Col>
-                                    <img
-                                        width='100%' height='auto'
-                                        className="d-block w-100"
-                                        src={Img5}
-                                        alt="First slide"
-                                    />
-                                </Col>
-                            </Carousel.Item>
-                            {/* })} */}
-                        </Carousel>
-
+                        <div>
+                            <figure >
+                                <img src={Img5} width='100%' height='auto' />
+                            </figure >
+                        </div>
                     </Col>
                     <Col lg='6'>
                         <Row className='d-flex justify-content-center' style={{ padding: '50px ' }}>
