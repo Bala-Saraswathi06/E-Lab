@@ -12,19 +12,36 @@ export class AddCategory extends Component {
     constructor(props) {
         super(props)
 
-        this.state = {
+        this.initialState = {
             count: 1,
             submit: false,
-            categoryObj:'',
-
+            categoryObj: {
+                lab: 'botany',
+            },
+            lab: '',
         }
+        this.state = this.initialState
     }
     componentDidMount() {
-        categoryRef.doc('doc').get().then((res) => {
-            const category = res.data()
-            this.setState({ category })
-            console.log(category)
+
+        categoryRef.doc(`botany`).get().then((res) => {
+            const botanyCategory = res.data()
+            this.setState({ botanyCategory, category: botanyCategory })
+            console.log(botanyCategory, 'botanyCategory')
         })
+
+        categoryRef.doc(`zoology`).get().then((res) => {
+            const zoologyCategory = res.data()
+            this.setState({ zoologyCategory })
+            console.log(zoologyCategory, 'zoologyCategory')
+        })
+    }
+
+    labChange = (e) => {
+        const { name, value } = e.target
+
+        value === 'botany' ? this.setState({ category: this.state.botanyCategory }) : this.setState({ category: this.state.zoologyCategory })
+        this.onChange(name, value)
     }
 
     onChange = (name, value) => {
@@ -36,8 +53,6 @@ export class AddCategory extends Component {
                 }
             }
         })
-        // this.setState({ [name]: value })
-        console.log(name, value)
     }
 
     CategorySelectLoop = () => {
@@ -48,7 +63,7 @@ export class AddCategory extends Component {
                 <CategorySelect
                     category={this.state.category[`Category${i + 1}`]}
                     name={`Category${i + 1}`}
-                    value={this.state[`Category${i + 1}`]}
+                    value={this.state.categoryObj[`Category${i + 1}`]}
                     onChange={this.onChange}
                     submit={this.state.submit}
                 />)
@@ -66,16 +81,20 @@ export class AddCategory extends Component {
     }
 
     onSubmit = () => {
+        
+        console.log(this.state)
         this.setState({ submit: true }, () => {
             Swal.fire({
                 icon: 'success',
                 text: 'Species Added Successfully'
-            }).then(() => window.location.reload())
+            })
+            this.setState(this.initialState)
+            this.componentDidMount()
         })
     }
 
     render() {
-        const { category, count , categoryObj} = this.state;
+        const { category, count, categoryObj } = this.state;
         return (
             <div>
                 <Header />
@@ -90,7 +109,7 @@ export class AddCategory extends Component {
                                     <Form.Group as={Row} >
                                         <Form.Label > Select Laboratory </Form.Label>
                                         <Col>
-                                            <Form.Control as='select' name='lab' value={categoryObj['lab']} defaultValue='' onChange={e=>this.onChange(e.target.name, e.target.value)}  >
+                                            <Form.Control as='select' name='lab' value={categoryObj['lab']} defaultValue='' onChange={this.labChange}  >
                                                 <option value='' disabled > </option>
                                                 <option value='botany' > Botany </option>
                                                 <option value='zoology' >zoology </option>
@@ -105,7 +124,7 @@ export class AddCategory extends Component {
                             </Form>
                             <Row className='d-flex justify-content-center' style={{ marginTop: '20px' }}>
                                 <Button variant='danger' style={{ margin: '10px' }} onClick={(e) => this.setState({ count: count + 1 })}> <i class="fa fa-plus" style={{ padding: '5px' }} aria-hidden="true"></i>  Species</Button>
-                                <Button variant='danger' style={{ margin: '10px' }} onClick={this.onSubmit}> Save</Button>
+                                <Button variant='danger' type='submit' style={{ margin: '10px' }} onClick={this.onSubmit}> Save</Button>
                                 <Button variant='danger' style={{ margin: '10px' }} onClick={(e) => this.setState({ count: count - 1 })}> <i class="fa fa-minus" style={{ padding: '5px' }} aria-hidden="true"></i>  Species</Button>
                             </Row>
                         </Card.Body>

@@ -1,37 +1,59 @@
 import React, { Component } from 'react'
 import { Card, Row, Col, Form, Button, } from 'react-bootstrap'
 import Img1 from '../../../img/img-09.jpg'
-import { contentRef, imagesRef } from '../../../firebase/Firebase'
+import { categoryRef, contentRef, imagesRef } from '../../../firebase/Firebase'
 import Swal from 'sweetalert2'
+import firebase from 'firebase'
 
 export class DataContent extends Component {
     constructor(props) {
         super(props)
 
-        this.state = {
+        this.initialState = {
             name: '',
             imageName: '',
             imageFile: '',
             mainContent: '',
             subContent: '',
-            imageUrl:'',
+            imageUrl: '',
+            // submit:this.props.submit
         }
+        this.state = this.initialState
     }
     componentDidUpdate() {
-        const { name, imageName, imageFile, mainContent, subContent } = this.state
+        const { name, imageName, imageFile, mainContent, subContent, } = this.state
+        const { categoryObj, submit } = this.props
 
-        if (this.props.submit === true) {
-            console.log(this.props.categoryObj, 'categoryObj')
+        if (submit === true) {
+            console.log(categoryObj, 'categoryObj')
+            let keys = Object.keys(categoryObj)
+            console.log(keys)
 
-            const data = this.props.categoryObj
-            data['name'] = name
-            data['imageName'] = imageName
-            data['mainContent'] = mainContent
-            data['subContent'] = subContent
+            categoryRef.doc(`${categoryObj.lab}Relation`).update({
+                ['kingdom']: firebase.firestore.FieldValue.arrayUnion(categoryObj[keys[1]]),
+            })
 
-            contentRef.add(data)
-            imagesRef.child(imageName).put(imageFile)
+            for (let i = 1; i < keys.length - 1; i++) {
+                if (i === keys.length) {
+                    const data = categoryObj
+                    data['name'] = name
+                    data['imageName'] = imageName
+                    data['mainContent'] = mainContent
+                    data['subContent'] = subContent
 
+                    contentRef.add(data).then(() => {
+                        imagesRef.child(imageName).put(imageFile)
+                    })
+                    this.setState(this.initialState)
+                } else {
+                    let key = categoryObj[keys[i]]
+                    let value = categoryObj[keys[i + 1]]
+                    console.log(key, value)
+                    categoryRef.doc(`${categoryObj.lab}Relation`).update({
+                        [key]: firebase.firestore.FieldValue.arrayUnion(value),
+                    })
+                }
+            }
         }
     }
 
@@ -45,7 +67,7 @@ export class DataContent extends Component {
     }
 
     render() {
-        const { name, mainContent,imageUrl, subContent } = this.state
+        const { name, mainContent, imageUrl, subContent } = this.state
         console.log(imageUrl)
         return (
             <div className='box' >
@@ -83,9 +105,9 @@ export class DataContent extends Component {
                         <Button variant='danger' > View </Button>
                     </Col> */}
                     <Col lg='4'>
-                    { imageUrl ==='' ?  <i class="fa fa-picture-o" style={{fontSize:'5em'}} ></i>:
-                        <img src={imageUrl} height='150px' width='100%' /> }
-                   
+                        {imageUrl === '' ? <i class="fa fa-picture-o" style={{ fontSize: '5em' }} ></i> :
+                            <img src={imageUrl} height='150px' width='100%' />}
+
                     </Col>
                 </Row>
                 <Row>

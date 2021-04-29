@@ -38,11 +38,24 @@
   border-style: inset; */
  
 	
-	background: #fff;
-	overflow: hidden;
+	
+  box-shadow:3px 8px 16px 0px rgba(0,0,0,0.2) ;
+  padding: 15px;
+  margin-top: 20px;
+  background-color: white;
   /* border: #c26b3f 10px solid; */
   /* outline: #532c18 5px inset; */
   /* margin:50px 20px */
+}
+.frame1 figure{
+  background: #fff;
+	overflow: hidden;
+}
+.frame1 div{
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: 500;
+  text-transform: capitalize;
 }
 .frame1 img{
   /* border:white 10px solid; */
@@ -56,14 +69,51 @@
 	transform: scale(1.3);
 }
 .gallery{
-  /* background: url('./img/wood-01.jpg') no-repeat center  fixed;  */
-  background-color: white;
+  background: url('./img/wood-01.jpg') no-repeat center  fixed; 
+  /* background-color: white; */
 }
 .filter{
   background-color: black;
   padding: 30px;
   color: rgb(182, 178, 178);
 }
+/* 
+.dropdown {
+  font-family: cursive;
+  margin: 20px;
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 150px;
+  box-shadow: 3px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  padding: 20px;
+}
+.dropdown-content option {
+  color: black;
+  text-decoration: none;
+  display: block;
+  padding: 3px 10px;
+}
+
+.dropdown-content option:hover {
+  color: rgb(231, 33, 76);
+  text-decoration: none;
+  position: relative;
+  animation: myfirst 1s ;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+}
+@keyframes myfirst {
+  0% { left: 0px; }
+  100% { left: 12px; }
+}
+.dropdown:hover .dropdown-content {display: block;} */
+
 
 .dropdown {
   font-family: cursive;
@@ -80,14 +130,15 @@
   z-index: 1;
   padding: 20px;
 }
-.dropdown-content a {
+.dropdown-content option {
   color: black;
   text-decoration: none;
   display: block;
   padding: 3px 10px;
 }
 
-.dropdown-content a:hover {
+.dropdown-content option:hover {
+  color: rgb(231, 33, 76);
   text-decoration: none;
   position: relative;
   animation: myfirst 1s ;
@@ -99,8 +150,6 @@
   100% { left: 12px; }
 }
 .dropdown:hover .dropdown-content {display: block;}
-
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
 
 .footer{
   background-color: black;

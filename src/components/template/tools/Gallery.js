@@ -1,116 +1,60 @@
-import { React, useState } from 'react'
-import { Row, Col } from 'react-bootstrap'
-import Content from '../pages/ContentPage'
-import Img1 from '../../../img/img-01.jpg'
-import Img2 from '../../../img/img-02.jpg'
-import Img3 from '../../../img/img-03.jpg'
-import Img4 from '../../../img/img-04.jpg'
-import Img5 from '../../../img/img-05.jpg'
-import Img6 from '../../../img/img-06.jpg'
-import Img7 from '../../../img/img-07.jpg'
-import Img8 from '../../../img/img-08.jpg'
-import Img9 from '../../../img/img-09.jpg'
+import React, { Component } from 'react'
+import { Row, Col, Button, Carousel } from 'react-bootstrap'
 import { Redirect } from 'react-router-dom'
+import { categoryRef, contentRef, imagesRef} from '../../../firebase/Firebase'
+import { firebaseLooper } from '../../../firebase/FirebaseLooper'
+import ContentPage from '../pages/ContentPage'
+ 
+export class Gallery extends Component {
+    constructor(props) {
+        super(props)
 
-
-function Gallery() {
-
-    const [url, setUrl] = useState('')
-
-    const onClick = (e) => {
-        setUrl(e.target.src)
-        console.log(e.target.src)
+        this.state = {
+            data: this.props.data,
+            imageData:'',
+        }
     }
-    return (
-         <>
-         { url !== '' ? <Redirect to='/content' /> :
-        <div className='gallery' >
-            <Row style={{ margin: 'auto', width: "100%", padding: '50px' }}>
-                <Col lg={4}>
-                    <div>
-                        <figure className='frame1'>
-                            <img onClick={onClick} src={Img4} width='100%' height='auto' />
-                        </figure >
+    // onClick = (data) => {
+    //     this.props.imageData = data
+    //     this.setState({ imageData: data })
+    // }
+
+    render() {
+        const { imageData, data } = this.state
+        // console.log(this.props.data,this.state.data,'data')
+        return (
+            <>
+                {/* { imageData !== '' ? 
+                <ContentPage imageData={imageData} />
+                // <Redirect to='/content' /> 
+                : */}
+                    <div className='gallery' >
+                        <Row style={{ margin: 'auto', width: "100%", padding: '50px', }}>
+                            {this.props.data!== undefined && this.props.data.map((data) =>
+                                <Col lg={4}>
+                                    <div className='frame1'>
+                                        <figure >
+                                            <img id={data.imageName} src={data.imageUrl} onClick={e=>this.props.setImageData(data)}  width='100%' height='auto' />
+                                        </figure >
+                                        <div >{data.name} </div>
+                                    </div>
+                                </Col>
+                            )}
+                           
+                                {/* <Col lg={4}>
+                                    <div className='frame1'>
+                                        <figure >
+                                            <img id='img-09.jpg' onClick={this.onClick} src='' width='100%' height='auto' />
+                                        </figure >
+                                        <div >{data.imageName} </div>
+                                    </div>
+                                </Col> */}
+                            
+                        </Row>
                     </div>
-                    <div>
-                        <figure className='frame1'>
-                            <img src={Img7} width='100%' height='auto' />
-                        </figure>
-                    </div>
-                    <div>
-                        <figure className='frame1'>
-                            <img src={Img3} width='100%' height='auto' />
-                        </figure>
-                    </div>
-                    <div>
-                        <figure className='frame1'>
-                            <img src={Img1} width='100%' height='auto' />
-                        </figure>
-                    </div>
-                    <div>
-                        <figure className='frame1'>
-                            <img src={Img5} width='100%' height='auto' />
-                        </figure>
-                    </div>
-                </Col>
-                <Col lg={4}>
-                    <div>
-                        <figure className='frame1'>
-                            <img src={Img2} width='100%' height='auto' />
-                        </figure>
-                    </div>
-                    <div>
-                        <figure className='frame1'>
-                            <img src={Img5} width='100%' height='auto' />
-                        </figure>
-                    </div>
-                    <div>
-                        <figure className='frame1'>
-                            <img src={Img8} width='100%' height='auto' />
-                        </figure>
-                    </div>
-                    <div>
-                        <figure className='frame1'>
-                            <img src={Img4} width='100%' height='auto' />
-                        </figure >
-                    </div>
-                    <div>
-                        <figure className='frame1'>
-                            <img src={Img6} width='100%' height='auto' />
-                        </figure>
-                    </div>
-                </Col>
-                <Col lg={4}>
-                    <div>
-                        <figure className='frame1' >
-                            <img src={Img9} width='100%' height='auto' />
-                        </figure>
-                    </div>
-                    <div>
-                        <figure className='frame1'>
-                            <img src={Img7} width='100%' height='auto' />
-                        </figure>
-                    </div>
-                    <div>
-                        <figure className='frame1'>
-                            <img src={Img2} width='100%' height='auto' />
-                        </figure>
-                    </div>
-                    <div>
-                        <figure className='frame1'>
-                            <img src={Img1} width='100%' height='auto' />
-                        </figure>
-                    </div>
-                    <div>
-                        <figure className='frame1'>
-                            <img src={Img8} width='100%' height='auto' />
-                        </figure>
-                    </div>
-                </Col>
-            </Row>
-        </div>  }
-        </>
-    )
+            </>
+        )
+    }
 }
 
 export default Gallery
