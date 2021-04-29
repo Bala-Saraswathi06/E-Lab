@@ -3,7 +3,7 @@ import { Route ,Redirect, Switch} from 'react-router-dom'
 import Main from '../template/pages/Main'
 import GalleryPage from '../template/pages/GalleryPage'
 import AddCategory from '../admin/pages/AddCategory'
-import AddContent from  '../admin/pages/AddContent'
+import AddData from  '../admin/pages/AddData'
 import ContentPage from '../template/pages/ContentPage'
 import Logout from '../admin/auth/Logout'
 
@@ -19,7 +19,7 @@ function BaseRouter() {
                 <Route exact path='/logout' > <Logout /></Route>
                 {login ? <>
                 <Route exact path='/addCategory' > <AddCategory /></Route> 
-                <Route exact path='/addContent' > <AddContent /></Route> </> :
+                <Route exact path='/addContent' > <AddData /></Route> </> :
                 <Redirect to='/' /> }
             </>
     )

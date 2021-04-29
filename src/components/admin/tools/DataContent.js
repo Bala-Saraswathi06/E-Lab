@@ -11,41 +11,32 @@ export class DataContent extends Component {
 
         this.initialState = {
             name: '',
+            speciesClass: '',
+            order: '',
+            family: '',
             imageName: '',
             imageFile: '',
             mainContent: '',
             subContent: '',
             imageUrl: '',
-            // submit:this.props.submit
         }
         this.state = this.initialState
     }
     componentDidUpdate() {
-        const { name, imageName, imageFile, mainContent, subContent, } = this.state
+        const { name, speciesClass, order, family, imageName, imageFile, mainContent, subContent, } = this.state
         const { categoryObj, submit } = this.props
 
         if (submit === true) {
-            console.log(categoryObj, 'categoryObj')
+            console.log(categoryObj, submit, 'categoryObj')
             let keys = Object.keys(categoryObj)
-            console.log(keys)
+            console.log(keys);
 
-            categoryRef.doc(`${categoryObj.lab}Relation`).update({
-                ['kingdom']: firebase.firestore.FieldValue.arrayUnion(categoryObj[keys[1]]),
-            })
+            if (keys.length > 1) {
 
-            for (let i = 1; i < keys.length - 1; i++) {
-                if (i === keys.length) {
-                    const data = categoryObj
-                    data['name'] = name
-                    data['imageName'] = imageName
-                    data['mainContent'] = mainContent
-                    data['subContent'] = subContent
-
-                    contentRef.add(data).then(() => {
-                        imagesRef.child(imageName).put(imageFile)
-                    })
-                    this.setState(this.initialState)
-                } else {
+                categoryRef.doc(`${categoryObj.lab}Relation`).update({
+                    ['kingdom']: firebase.firestore.FieldValue.arrayUnion(categoryObj[keys[1]]),
+                })
+                for (let i = 1; i < keys.length-1; i++) {
                     let key = categoryObj[keys[i]]
                     let value = categoryObj[keys[i + 1]]
                     console.log(key, value)
@@ -54,6 +45,21 @@ export class DataContent extends Component {
                     })
                 }
             }
+
+            const data = categoryObj
+            data['name'] = name
+            data['class'] = speciesClass
+            data['order'] = order
+            data['family'] = family
+            data['imageName'] = imageName
+            data['mainContent'] = mainContent
+            data['subContent'] = subContent
+
+            contentRef.add(data).then(() => {
+                imagesRef.child(imageName).put(imageFile)
+            })
+            // this.setState(this.initialState)
+
         }
     }
 
@@ -67,7 +73,7 @@ export class DataContent extends Component {
     }
 
     render() {
-        const { name, mainContent,imageUrl, subContent, order, className, family, } = this.state
+        const { name, mainContent, imageUrl, subContent, order, speciesClass, family, } = this.state
         console.log(imageUrl)
         return (
             <div className='box' >
@@ -77,7 +83,6 @@ export class DataContent extends Component {
                             <Form.Label > Scientific Name </Form.Label>
                             <Col>
                                 <Form.Control
-                                    // style={{ width: '80%' }}
                                     type='text'
                                     placeholder='Scientific Name'
                                     name='name'
@@ -92,11 +97,10 @@ export class DataContent extends Component {
                             <Form.Label > Class </Form.Label>
                             <Col>
                                 <Form.Control
-                                    // style={{ width: '80%' }}
                                     type='text'
                                     placeholder='Class'
-                                    name='className'
-                                    value={className}
+                                    name='speciesClass'
+                                    value={speciesClass}
                                     onChange={this.onChange}
                                 />
                             </Col>
@@ -107,7 +111,6 @@ export class DataContent extends Component {
                             <Form.Label > Order </Form.Label>
                             <Col>
                                 <Form.Control
-                                    // style={{ width: '80%' }}
                                     type='text'
                                     placeholder='order'
                                     name='order'
@@ -122,7 +125,6 @@ export class DataContent extends Component {
                             <Form.Label > Family </Form.Label>
                             <Col>
                                 <Form.Control
-                                    // style={{ width: '80%' }}
                                     type='text'
                                     placeholder='Family'
                                     name='family'

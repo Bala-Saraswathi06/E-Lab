@@ -45,14 +45,17 @@ export class AddCategory extends Component {
     }
 
     onChange = (name, value) => {
-        this.setState(prevState => {
-            return {
-                categoryObj: {
-                    ...prevState.categoryObj,
-                    [name]: value
+        if (value !== '') {
+            this.setState(prevState => {
+                return {
+                    categoryObj: {
+                        ...prevState.categoryObj,
+                        [name]: value
+                    }
                 }
-            }
-        })
+            })
+        }
+
     }
 
     CategorySelectLoop = () => {
@@ -75,22 +78,29 @@ export class AddCategory extends Component {
         const { count } = this.state;
         const list = []
         for (let i = 0; i < count; i++) {
-            list.push(<Content submit={this.state.submit} categoryObj={this.state.categoryObj} />)
+            list.push(<Content
+                submit={this.state.submit}
+                categoryObj={this.state.categoryObj}
+                submitSuccess={this.submitSuccess}
+
+            />)
         }
         return list
     }
 
-    onSubmit = () => {
-        
+    onSubmit = (e) => {
+        e.preventDefault()
         console.log(this.state)
         this.setState({ submit: true }, () => {
             Swal.fire({
                 icon: 'success',
                 text: 'Species Added Successfully'
             })
-            this.setState(this.initialState)
-            this.componentDidMount()
         })
+    }
+
+    submitSuccess = () => {
+        this.setState({ submit: false })
     }
 
     render() {
@@ -109,7 +119,7 @@ export class AddCategory extends Component {
                                     <Form.Group as={Row} >
                                         <Form.Label > Select Laboratory </Form.Label>
                                         <Col>
-                                            <Form.Control as='select' name='lab' value={categoryObj['lab']} defaultValue='' onChange={this.labChange}  >
+                                            <Form.Control as='select' name='lab' value={categoryObj['lab']} defaultValue='' onChange={this.labChange} required >
                                                 <option value='' disabled > </option>
                                                 <option value='botany' > Botany </option>
                                                 <option value='zoology' >zoology </option>
@@ -121,12 +131,13 @@ export class AddCategory extends Component {
                                     {category !== undefined && this.CategorySelectLoop()}
                                 </Row>
                                 {this.DataContentLoop()}
+
+                                <Row className='d-flex justify-content-center' style={{ marginTop: '20px' }}>
+                                    <Button variant='danger' style={{ margin: '10px' }} onClick={(e) => this.setState({ count: count + 1 })}> <i class="fa fa-plus" style={{ padding: '5px' }} aria-hidden="true"></i>  Species</Button>
+                                    <Button variant='danger' type='submit' style={{ margin: '10px' }} onClick={this.onSubmit}> Save</Button>
+                                    <Button variant='danger' style={{ margin: '10px' }} onClick={(e) => this.setState({ count: count - 1 })}> <i class="fa fa-minus" style={{ padding: '5px' }} aria-hidden="true"></i>  Species</Button>
+                                </Row>
                             </Form>
-                            <Row className='d-flex justify-content-center' style={{ marginTop: '20px' }}>
-                                <Button variant='danger' style={{ margin: '10px' }} onClick={(e) => this.setState({ count: count + 1 })}> <i class="fa fa-plus" style={{ padding: '5px' }} aria-hidden="true"></i>  Species</Button>
-                                <Button variant='danger' type='submit' style={{ margin: '10px' }} onClick={this.onSubmit}> Save</Button>
-                                <Button variant='danger' style={{ margin: '10px' }} onClick={(e) => this.setState({ count: count - 1 })}> <i class="fa fa-minus" style={{ padding: '5px' }} aria-hidden="true"></i>  Species</Button>
-                            </Row>
                         </Card.Body>
                     </Card>
                 </div>

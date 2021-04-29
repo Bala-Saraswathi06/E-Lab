@@ -16,18 +16,19 @@ export class Filter extends Component {
             categoryList: [],
             condition: '',
             filterData: '',
-            filterArray: [],
+            data_list: [],
+            filterObj: '',
         }
     }
     componentDidMount() {
 
-        categoryRef.doc(`${this.props.lab}`).get().then((res) => {
-            const category = res.data()
-            let categoryList = []
-            Object.keys(category).map((key, i) => categoryList.push(`Category${i + 1}`))
-            this.setState({ category, categoryList })
-            console.log(category, categoryList)
-        })
+        // categoryRef.doc(`${this.props.lab}`).get().then((res) => {
+        //     const category = res.data()
+        //     let categoryList = []
+        //     Object.keys(category).map((key, i) => categoryList.push(`Category${i + 1}`))
+        //     this.setState({ category, categoryList })
+        //     console.log(category, categoryList)
+        // })
 
         categoryRef.doc(`${this.props.lab}Relation`).get().then(res => {
             const relation = res.data()
@@ -61,7 +62,7 @@ export class Filter extends Component {
                     initialObj['imageUrl'] = url;
                     fullArray.push(initialObj);
                 });
-                this.setState({ filterData: fullArray })
+                this.setState({ filterData: fullArray, data_list:fullArray })
                 // this.props.setRelatedImg(fullArray)
                 console.log(fullArray, 'fullArray')
             })
@@ -90,14 +91,48 @@ export class Filter extends Component {
 
     // }
     onChange = (e) => {
-        
-        this.state.filterArray.push(e.target.value)
-        this.setState({ num: true })
+
+        let filterData = '';
+        filterData = this.state.data_list.filter(data => Object.values(data).includes(e.target.label))
+        console.log(e.target.value, e.target.label,filterData, 'filterData')
+
+        let keys = Object.keys(this.state.filterObj)
+        let obj = {}
+
+        for (let i = 0; i < keys.length; i++) {
+
+            if (keys[i] === e.target.value) {
+                obj = {
+                    ...obj,
+                    [keys[i]]: e.target.label,
+                }
+                this.setState({ filterObj: obj, filterData })
+                return
+            }
+            obj = {
+                ...obj,
+                [keys[i]]: this.state.filterObj[keys[i]],
+            }
+        }
+        //console.log(obj, 'obj')
+
+
+        this.setState(prevState => {
+            return {
+                filterObj: {
+                    ...prevState.filterObj,
+                    [e.target.value]: e.target.label
+                }, filterData
+            }
+        })
+        //console.log(e.target.value, e.target.label)
+        // this.state.filterArray.push(e.target.value)
+        // this.setState({ num: true })
     }
 
     render() {
-        const { lab, category, categoryList, filterData, relation, filterArray } = this.state;
-        console.log(this.props.imageData, filterArray,'filterData')
+        const { lab, category, categoryList, filterData, relation, filterArray, filterObj } = this.state;
+        //console.log(this.props.imageData, filterArray, filterObj, 'filterData')
         return (
             <>
                 <div className='filter' style={{ position: 'relative', bottom: '80px' }}>
@@ -129,21 +164,22 @@ export class Filter extends Component {
                             <Button variant='danger'> Kingdom <i class="fa fa-angle-down" aria-hidden="true"></i> </Button>
                             <div className='dropdown-content'>
                                 {relation !== undefined && relation.kingdom.map(value =>
-                                    <option value={value} onClick={this.onChange}> {value} </option>
+                                    <option value='kingdom' label={value} onClick={this.onChange}> {value} </option>
                                 )}
                             </div>
                         </div>
 
-                        {filterArray !== '' && filterArray.map((key, i) => 
-                                <div className='dropdown'>
-                                    <Button variant='danger'> {key} <i class="fa fa-angle-down" aria-hidden="true"></i> </Button>
-                                    <div className='dropdown-content'>
-                                        {relation[key] !== undefined && relation[key].map(value =>
-                                            <option value={value} onClick={this.onChange}> {value} </option>
-                                        )}
-                                    </div>
+                        {filterObj !== '' && Object.keys(filterObj).map((key, i) =>
+                            relation[filterObj[key]] !== undefined &&
+                            <div className='dropdown'>
+                                <Button variant='danger'> {filterObj[key]} <i class="fa fa-angle-down" aria-hidden="true"></i> </Button>
+                                <div className='dropdown-content'>
+                                    {relation[filterObj[key]].map(value =>
+                                        <option value={filterObj[key]} label={value} onClick={this.onChange}> {value} </option>
+                                    )}
                                 </div>
-                            )
+                            </div>
+                        )
                         }
 
 

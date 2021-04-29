@@ -12,10 +12,9 @@ function CategorySelect(props) {
                 <Form.Group as={Row} >
                     <Form.Label > Select {props.name} </Form.Label>
                     <Col>
-                        <Form.Control as='select' name={props.name} value={Value} onChange={e => props.onChange(e.target.name, e.target.value)} style={{ width: '80%' }}  >
+                        <Form.Control as='select' name={props.name} value={Value} onChange={props.onChange} style={{ width: '80%' }}  >
                             <option value=''  > </option>
                             {props.category.map((name, i) => <option key={i} value={name} > {name} </option>)}
-
                         </Form.Control>
                     </Col>
                 </Form.Group>
