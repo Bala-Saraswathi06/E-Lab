@@ -41,53 +41,61 @@ class ImageContent extends Component {
         console.log(imageData, count, minCount, maxCount, filterData, 'imageData')
 
         return (
-            <div style={{ position: 'relative', bottom: '80px', marginTop: '80px', color: 'white' }}>
+            <div style={{ position: 'relative', bottom: '80px', marginTop: '80px', }}>
 
                 <div className='container'>
                     <Row>
                         <Link onClick={e => this.props.setImageData('')} className='backLink' ><i class="fa fa-hand-o-left" style={{ color: 'rgb(231, 33, 76)', fontSize: '3em', }}></i> </Link>
                     </Row>
-                    <Row className='d-flex justify-content-center' >
-                        <p style={{ fontSize: '3.3em', marginTop: '12px' }}>Image</p>
-                        <p style={{ color: 'rgb(231, 33, 76)', fontSize: '4em', textTransform: 'uppercase', }}>DETAIL</p>
-                    </Row>
-                    <Row className='d-flex justify-content-center' >
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do ipsum dolor sit amet,</p>
-                    </Row>
 
-
-                    <hr style={{ color: 'grey', backgroundColor: 'grey', width: '60%' }}></hr>
-
-
-                    {count === 0 ? <>
-                        <Row >
-                            <img src={imageData.imageUrl} height='600px' width='100%' />
-                        </Row>
-                         <div style={{ textAlign: 'end' }}>
-                            <i class="fa fa-angle-right" id='arrowButton' style={{ bottom: '420px' }} onClick={e => this.setState({ count: count + 1 })}></i>
-                        </div>
-                        <Row>
-                            <p style={{ fontSize: '3em', textTransform: 'uppercase', marginTop: '50px' }}> {imageData.name} </p>
-                        </Row>
-                        <Row style={{ textAlign: 'center', fontSize: '1.7em', }}>
-                            <Col> CLASS : {imageData.class} </Col>
-                            <Col> ORDER : {imageData.order} </Col>
-                            <Col> FAMILY : {imageData.family}</Col>
-                        </Row>
-                        <Row className='d-flex justify-content-center' style={{ margin: '30px' }}>
-                            <Row id='box'  >
-                                {this.categoryList(imageData)}
-                            </Row>
-                        </Row>
-
-                        <Row>
-                            <p style={{ fontSize: '1.5em', fontFamily: 'cursive' }} >{imageData.mainContent} </p>
-                        </Row>
-                        <Row >
-                            <p style={{ fontSize: '1.3em', marginTop: '20px' }} > {imageData.subContent}  </p>
-                        </Row>
-                    </> :
+                    {count === 0 ?
                         <>
+                            <Row className='d-flex justify-content-center' >
+                                {/* <p style={{ fontSize: '3.3em', marginTop: '12px' }}>Image</p> */}
+                                <p style={{ color: 'rgb(231, 33, 76)', fontSize: '4em', textTransform: 'uppercase', }}> {imageData.name}</p>
+                            </Row>
+                            <Row className='d-flex justify-content-center' >
+                                <p style={{ fontSize: '1.2em' }}>Lorem ipsum dolor consectetur adipiscing elit, sed do ipsum dolor sit amet,</p>
+                            </Row>
+                            <hr style={{ color: 'grey', backgroundColor: 'black', width: '70%' }}></hr>
+
+                            <Row >
+                                <img src={imageData.imageUrl} height='600px' width='100%' />
+                            </Row>
+                            <div style={{ textAlign: 'end' }}>
+                                <i class="fa fa-angle-right" id='arrowButton' style={{ bottom: '420px' }} onClick={e => this.setState({ count: count + 1 })}></i>
+                            </div>
+                            <Row style={{ textAlign: 'center', fontSize: '1.7em', fontWeight: '600', margin: '10px' }}>
+                                <Col> CLASS : {imageData.class} </Col>
+                                <Col> ORDER : {imageData.order} </Col>
+                                <Col> FAMILY : {imageData.family}</Col>
+                            </Row>
+
+
+                            <Row className='d-flex justify-content-center' style={{ margin: '10px' }} >
+                                <Row id='box'  >
+                                    {this.categoryList(imageData)}
+                                </Row>
+                            </Row>
+
+                            <Row>
+                                <p style={{ fontSize: '1.5em', fontWeight: '600' }} >{imageData.mainContent} </p>
+                            </Row>
+                            <Row >
+                                <p style={{ fontSize: '1.5em', fontWeight: '600', marginTop: '20px' }} > {imageData.subContent}  </p>
+                            </Row>
+                        </>
+                        :
+                        <>
+                            <Row className='d-flex justify-content-center' >
+                                {/* <p style={{ fontSize: '3.3em', marginTop: '12px' }}>Image</p> */}
+                                <p style={{ color: 'rgb(231, 33, 76)', fontSize: '4em', textTransform: 'uppercase', }}> {filterData[count - 1].name}</p>
+                            </Row>
+                            <Row className='d-flex justify-content-center' >
+                                <p style={{ fontSize: '1.2em' }}>Lorem ipsum dolor consectetur adipiscing elit, sed do ipsum dolor sit amet,</p>
+                            </Row>
+                            <hr style={{ color: 'grey', backgroundColor: 'black', width: '70%' }}></hr>
+
                             <Row >
                                 <img src={filterData[count - 1].imageUrl} height='600px' width='100%' />
                             </Row>
@@ -97,25 +105,22 @@ class ImageContent extends Component {
                             {count !== maxCount && <div style={{ textAlign: 'end' }}>
                                 <i class="fa fa-angle-right" id='arrowButton' style={{ bottom: '450px' }} onClick={e => this.setState({ count: count + 1 })}></i>
                             </div>}
-                            <Row>
-                                <p style={{ fontSize: '3em', textTransform: 'uppercase', marginTop: '50px' }}> {filterData[count - 1].name} </p>
-                            </Row>
-                            <Row style={{ textAlign: 'center', fontSize: '1.7em', }}>
+                            <Row style={{ textAlign: 'center', fontSize: '1.7em', fontWeight: '600', }}>
                                 <Col> CLASS : {filterData[count - 1].class} </Col>
                                 <Col> ORDER : {filterData[count - 1].order} </Col>
                                 <Col> FAMILY : {filterData[count - 1].family}</Col>
                             </Row>
-                            <Row className='d-flex justify-content-center' style={{ margin: '30px' }}>
+                            <Row className='d-flex justify-content-center' style={{ margin: '10px' }} >
                                 <Row id='box'  >
                                     {this.categoryList(filterData[count - 1])}
                                 </Row>
                             </Row>
 
                             <Row>
-                                <p style={{ fontSize: '1.5em', fontFamily: 'cursive' }} >{filterData[count - 1].mainContent} </p>
+                                <p style={{ fontSize: '1.5em', fontWeight: '600' }} >{filterData[count - 1].mainContent} </p>
                             </Row>
                             <Row >
-                                <p style={{ fontSize: '1.3em', marginTop: '20px' }} > {filterData[count - 1].subContent}  </p>
+                                <p style={{ fontSize: '1.5em', fontWeight: '600', marginTop: '20px' }} > {filterData[count - 1].subContent}  </p>
                             </Row>
                         </>}
                 </div>

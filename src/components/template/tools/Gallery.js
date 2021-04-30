@@ -20,35 +20,35 @@ export class Gallery extends Component {
     }
     onClick = (e, data) => {
         this.props.setImageData(data)
-
+        window.scrollTo(0, 0);
     }
-    imageLoop1 = () => {
-        let count = Math.floor(this.props.filterData.length / 3)
-        let list = []
+    // imageLoop1 = () => {
+    //     let count = Math.floor(this.props.filterData.length / 3)
+    //     let list = []
 
-        for (let i = 0; i < count; i++) {
-            list.push(this.props.filterData[i])
-        }
-        return list;
-    }
-    imageLoop2 = () => {
-        let count = Math.floor(this.props.filterData.length / 3)
-        let list = []
+    //     for (let i = 0; i < count; i++) {
+    //         list.push(this.props.filterData[i])
+    //     }
+    //     return list;
+    // }
+    // imageLoop2 = () => {
+    //     let count = Math.floor(this.props.filterData.length / 3)
+    //     let list = []
 
-        for (let i = count; i < (count * 2); i++) {
-            list.push(this.props.filterData[i])
-        }
-        return list;
-    }
-    imageLoop3 = () => {
-        let count = Math.floor(this.props.filterData.length / 3)
-        let list = []
+    //     for (let i = count; i < (count * 2); i++) {
+    //         list.push(this.props.filterData[i])
+    //     }
+    //     return list;
+    // }
+    // imageLoop3 = () => {
+    //     let count = Math.floor(this.props.filterData.length / 3)
+    //     let list = []
 
-        for (let i = (count * 2) ; i <this.props.filterData.length; i++) {
-            list.push(this.props.filterData[i])
-        }
-        return list;
-    }
+    //     for (let i = (count * 2); i < this.props.filterData.length; i++) {
+    //         list.push(this.props.filterData[i])
+    //     }
+    //     return list;
+    // }
 
     render() {
         const { filterData } = this.state
@@ -56,8 +56,21 @@ export class Gallery extends Component {
         return (
             <>
 
-                <div className='gallery' >
+                <div className='gallery' style={{position:'relative', bottom:'80px'}} >
                     {this.props.filterData !== undefined &&
+                        <Row style={{ margin: 'auto', width: "100%", padding: '50px', }}>
+                            {this.props.filterData.map((data) =>
+                                <Col lg={4}>
+                                    <div className='frame1'>
+                                        <figure >
+                                            <img id={data.imageName} src={data.imageUrl} onClick={e => this.onClick(e, data)} width='100%' height='250px' />
+                                        </figure >
+                                        <div >{data.name} </div>
+                                    </div>
+                                </Col> )}
+                        </Row>
+                    }
+                    {/* {this.props.filterData !== undefined &&
                         <Row style={{ margin: 'auto', width: "100%", padding: '50px', }}>
                             {this.props.filterData.length <= 3 ?
                                 this.props.filterData.map((data) =>
@@ -102,7 +115,7 @@ export class Gallery extends Component {
                                     </Col>
                                 </>
                             }
-                        </Row>}
+                        </Row>} */}
                 </div>
             </>
         )

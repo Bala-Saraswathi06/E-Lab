@@ -9,8 +9,11 @@ function GalleryPage(props) {
     const [imageData, setImageData] = useState('')
     const [filterData, setFilterData] = useState('')
     const { lab } = props
+    window.scrollTo(0, 0);
     return (
-        <div style={{ backgroundColor: 'black' }}>
+        <div style={{
+            // backgroundColor: 'black' 
+        }}>
             <Header />
             {imageData === '' ?
                 <>
@@ -18,7 +21,9 @@ function GalleryPage(props) {
                     <Filter lab={lab} imageData={imageData} setFilterData={setFilterData} setImageData={setImageData} />
                 </> :
                 <ImageContent imageData={imageData} filterData={filterData} setImageData={setImageData} />}
+
             <Footer />
+
         </div>
     )
 }

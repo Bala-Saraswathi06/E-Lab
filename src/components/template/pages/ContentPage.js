@@ -16,7 +16,9 @@ export class ContentPage extends Component {
     
     render() {
         return (
-            <div style={{backgroundColor:'black', color:'white'}}>
+            <div 
+            // style={{backgroundColor:'black', color:'white'}}
+            >
                 <Header />
                 <ImageContent />
                 <Footer />
