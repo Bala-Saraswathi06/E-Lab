@@ -41,7 +41,7 @@ function Header() {
                 <Navbar.Brand > <img src={Logo2} style={{backgroundColor: 'rgba(0,0,0, 0.7)'}} /> </Navbar.Brand>
                 <Navbar.Brand style={{ fontSize: '1.2em' }}> St.Mary's College (Autonomous)</Navbar.Brand>
                 <Nav className="ml-auto">
-                    <Link className='nav-link' to="/"><i class="fa fa-home" style={{padding:'5px'}}></i>Home</Link>
+                    <Link className='nav-link' to="/"><i class="fa fa-home" style={{padding:'5px',}}></i>Home</Link>
                     <Link className='nav-link' onClick={handleShow}><i class="fa fa-sign-in" style={{padding:'5px'}}></i>Admin Login</Link>
                 </Nav>
 

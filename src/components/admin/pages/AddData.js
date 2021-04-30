@@ -118,19 +118,33 @@ export class AddCategory extends Component {
             data['mainContent'] = mainContent
             data['subContent'] = subContent
 
-            contentRef.add(data).then(() => {
-                imagesRef.child(imageName).put(imageFile)
-            })
-                .then(() => {
-                    Swal.fire({
-                        icon: 'success',
-                        text: 'Data Added Successfully'
-                    }).then(() => {
-                        //window.location.reload()
-                        this.setState(this.initialState, () => this.componentDidMount())
-
+            Swal.fire({
+                title: 'Loading',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                timer: 3000,
+                onOpen: () => {
+                    Swal.showLoading();
+                    contentRef.add(data).then(() => {
+                        imagesRef.child(imageName).put(imageFile)
                     })
-                })
+                        .then(() => {
+                            Swal.fire({
+                                icon: 'success',
+                                text: 'Data Added Successfully'
+                            }).then(() => {
+                                //window.location.reload()
+                                this.setState(this.initialState, () => this.componentDidMount())
+
+                            })
+                        })
+                }
+            })
+        }else{
+            Swal.fire({
+                icon: 'warning',
+                text: 'Please fillout all fields'
+            })
         }
 
     }

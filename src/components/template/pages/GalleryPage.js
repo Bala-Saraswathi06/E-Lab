@@ -1,4 +1,4 @@
-import {React, useState} from 'react'
+import { React, useState } from 'react'
 import Header from '../tools/Header'
 import LabSlider from '../tools/LabSlider'
 import Filter from '../tools/Filter'
@@ -7,18 +7,17 @@ import ImageContent from '../tools/ImageContent'
 
 function GalleryPage(props) {
     const [imageData, setImageData] = useState('')
+    const [filterData, setFilterData] = useState('')
     const { lab } = props
     return (
         <div style={{ backgroundColor: 'black' }}>
             <Header />
             {imageData === '' ?
                 <>
-                    <LabSlider lab={lab}  />
-                    <Filter lab={lab} imageData={imageData} setImageData={setImageData} />
+                    <LabSlider lab={lab} />
+                    <Filter lab={lab} imageData={imageData} setFilterData={setFilterData} setImageData={setImageData} />
                 </> :
-                <ImageContent imageData={imageData} setImageData={setImageData} />}
-
-            {/* <Gallery /> */}
+                <ImageContent imageData={imageData} filterData={filterData} setImageData={setImageData} />}
             <Footer />
         </div>
     )

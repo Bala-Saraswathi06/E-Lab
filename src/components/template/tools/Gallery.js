@@ -1,57 +1,109 @@
 import React, { Component } from 'react'
 import { Row, Col, Button, Carousel } from 'react-bootstrap'
 import { Redirect } from 'react-router-dom'
-import { categoryRef, contentRef, imagesRef} from '../../../firebase/Firebase'
+import { categoryRef, contentRef, imagesRef } from '../../../firebase/Firebase'
 import { firebaseLooper } from '../../../firebase/FirebaseLooper'
 import ContentPage from '../pages/ContentPage'
- 
+
 export class Gallery extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            data: this.props.data,
-            imageData:'',
+            filterData: this.props.filterData,
+            imageData: '',
         }
     }
-    // onClick = (data) => {
-    //     this.props.imageData = data
-    //     this.setState({ imageData: data })
-    // }
+    componentDidMount() {
+        let count = Math.round(this.props.filterData.length / 3)
+        this.setState({ count })
+    }
+    onClick = (e, data) => {
+        this.props.setImageData(data)
+
+    }
+    imageLoop1 = () => {
+        let count = Math.floor(this.props.filterData.length / 3)
+        let list = []
+
+        for (let i = 0; i < count; i++) {
+            list.push(this.props.filterData[i])
+        }
+        return list;
+    }
+    imageLoop2 = () => {
+        let count = Math.floor(this.props.filterData.length / 3)
+        let list = []
+
+        for (let i = count; i < (count * 2); i++) {
+            list.push(this.props.filterData[i])
+        }
+        return list;
+    }
+    imageLoop3 = () => {
+        let count = Math.floor(this.props.filterData.length / 3)
+        let list = []
+
+        for (let i = (count * 2) ; i <this.props.filterData.length; i++) {
+            list.push(this.props.filterData[i])
+        }
+        return list;
+    }
 
     render() {
-        const { imageData, data } = this.state
-        // console.log(this.props.data,this.state.data,'data')
+        const { filterData } = this.state
+        // console.log(this.props.filterData,'data')
         return (
             <>
-                {/* { imageData !== '' ? 
-                <ContentPage imageData={imageData} />
-                // <Redirect to='/content' /> 
-                : */}
-                    <div className='gallery' >
+
+                <div className='gallery' >
+                    {this.props.filterData !== undefined &&
                         <Row style={{ margin: 'auto', width: "100%", padding: '50px', }}>
-                            {this.props.data!== undefined && this.props.data.map((data) =>
-                                <Col lg={4}>
-                                    <div className='frame1'>
-                                        <figure >
-                                            <img id={data.imageName} src={data.imageUrl} onClick={e=>this.props.setImageData(data)}  width='100%' height='auto' />
-                                        </figure >
-                                        <div >{data.name} </div>
-                                    </div>
-                                </Col>
-                            )}
-                           
-                                {/* <Col lg={4}>
-                                    <div className='frame1'>
-                                        <figure >
-                                            <img id='img-09.jpg' onClick={this.onClick} src='' width='100%' height='auto' />
-                                        </figure >
-                                        <div >{data.imageName} </div>
-                                    </div>
-                                </Col> */}
-                            
-                        </Row>
-                    </div>
+                            {this.props.filterData.length <= 3 ?
+                                this.props.filterData.map((data) =>
+                                    <Col lg={4}>
+                                        <div className='frame1'>
+                                            <figure >
+                                                <img id={data.imageName} src={data.imageUrl} onClick={e => this.onClick(e, data)} width='100%' height='auto' />
+                                            </figure >
+                                            <div >{data.name} </div>
+                                        </div>
+                                    </Col>
+                                ) : <>
+                                    <Col lg={4}>
+                                        {this.imageLoop1().map((data) =>
+                                            <div className='frame1'>
+                                                <figure >
+                                                    <img id={data.imageName} src={data.imageUrl} onClick={e => this.onClick(e, data)} width='100%' height='auto' />
+                                                </figure >
+                                                <div >{data.name} </div>
+                                            </div>
+                                        )}
+                                    </Col>
+                                    <Col lg={4}>
+                                        {this.imageLoop2().map((data) =>
+                                            <div className='frame1'>
+                                                <figure >
+                                                    <img id={data.imageName} src={data.imageUrl} onClick={e => this.onClick(e, data)} width='100%' height='auto' />
+                                                </figure >
+                                                <div >{data.name} </div>
+                                            </div>
+                                        )}
+                                    </Col>
+                                    <Col lg={4}>
+                                        {this.imageLoop3().map((data) =>
+                                            <div className='frame1'>
+                                                <figure >
+                                                    <img id={data.imageName} src={data.imageUrl} onClick={e => this.onClick(e, data)} width='100%' height='auto' />
+                                                </figure >
+                                                <div >{data.name} </div>
+                                            </div>
+                                        )}
+                                    </Col>
+                                </>
+                            }
+                        </Row>}
+                </div>
             </>
         )
     }

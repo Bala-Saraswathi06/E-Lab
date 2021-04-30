@@ -173,6 +173,31 @@
   border-left:rgb(231, 33, 76) 5px solid ;
   /* border-bottom:rgb(231, 33, 76) 1px solid ; */
 }
+.buttonBox{
+  height: 40px;
+  border: none;
+  background-color:rgb(231, 33, 76);
+  padding: 0px 10px;
+  margin-top: 20px;
+  color: white;
+  /* position: relative; */
+}
+
+/* .arrow{
+  position: relative;
+  margin-top: 20px;
+  width: 40px;
+  border-top: 1px solid white;
+} */
+#box{
+  border: 5px solid white ;
+  padding: 20px;
+}
+#arrowButton{
+  position: relative;
+  font-size: 4em;
+  color: rgb(228, 228, 228);
+}
 
 /* %%%%%%%%%%%%%%%%%%%%%%%5 Form Style $$$$$$$$$$$$$$$$$$$$$$$ */
 .container{

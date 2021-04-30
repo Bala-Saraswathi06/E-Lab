@@ -35,8 +35,9 @@ export class AddCategory extends Component {
     }
 
     onChange = (name, value) => {
+        value.length!==0 && 
         this.setState({ [name]: value, submit: 'success', }, () => {
-            console.log(this.state[`${name}`], this.state.lab, name)
+            console.log( name,value)
             categoryRef.doc(`${this.state.lab}`).update({ [name]: value })
             Swal.fire({
                 icon: 'success',
