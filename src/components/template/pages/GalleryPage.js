@@ -9,7 +9,7 @@ function GalleryPage(props) {
     const [imageData, setImageData] = useState('')
     const [filterData, setFilterData] = useState('')
     const { lab } = props
-    window.scrollTo(0, 0);
+   
     return (
         <div style={{
             // backgroundColor: 'black' 

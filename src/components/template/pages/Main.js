@@ -10,7 +10,7 @@ function Main() {
 
     const [lab, setLab] = useState('')
     console.log(lab, 'lab')
-
+    window.scrollTo(0, 0);
     return (
         <div >
 

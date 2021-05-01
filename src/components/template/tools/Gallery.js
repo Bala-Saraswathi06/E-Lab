@@ -63,7 +63,7 @@ export class Gallery extends Component {
                                 <Col lg={4}>
                                     <div className='frame1'>
                                         <figure >
-                                            <img id={data.imageName} src={data.imageUrl} onClick={e => this.onClick(e, data)} width='100%' height='250px' />
+                                            <img id={data.imageName} src={data.imageUrl} onClick={e => this.onClick(e, data)} width='100%' height='350px' />
                                         </figure >
                                         <div >{data.name} </div>
                                     </div>

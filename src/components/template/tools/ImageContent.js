@@ -59,8 +59,8 @@ class ImageContent extends Component {
                             </Row>
                             <hr style={{ color: 'grey', backgroundColor: 'black', width: '70%' }}></hr>
 
-                            <Row >
-                                <img src={imageData.imageUrl} height='600px' width='100%' />
+                            <Row className='d-flex justify-content-center'>
+                                <img src={imageData.imageUrl} height='700px' width='700px' />
                             </Row>
                             <div style={{ textAlign: 'end' }}>
                                 <i class="fa fa-angle-right" id='arrowButton' style={{ bottom: '420px' }} onClick={e => this.setState({ count: count + 1 })}></i>
@@ -79,10 +79,10 @@ class ImageContent extends Component {
                             </Row>
 
                             <Row>
-                                <p style={{ fontSize: '1.5em', fontWeight: '600' }} >{imageData.mainContent} </p>
+                                <p style={{ fontSize: '1.5em', }} >{imageData.mainContent} </p>
                             </Row>
                             <Row >
-                                <p style={{ fontSize: '1.5em', fontWeight: '600', marginTop: '20px' }} > {imageData.subContent}  </p>
+                                <p style={{ fontSize: '1.5em',  marginTop: '20px' }} > {imageData.subContent}  </p>
                             </Row>
                         </>
                         :
@@ -96,8 +96,8 @@ class ImageContent extends Component {
                             </Row>
                             <hr style={{ color: 'grey', backgroundColor: 'black', width: '70%' }}></hr>
 
-                            <Row >
-                                <img src={filterData[count - 1].imageUrl} height='600px' width='100%' />
+                            <Row className='d-flex justify-content-center'>
+                                <img src={filterData[count - 1].imageUrl} height='700px' width='700px' />
                             </Row>
                             {count > minCount && <div style={{ textAlign: 'start' }}>
                                 <i class="fa fa-angle-left" id='arrowButton' style={{ bottom: '380px' }} onClick={e => this.setState({ count: count - 1 })}></i>
