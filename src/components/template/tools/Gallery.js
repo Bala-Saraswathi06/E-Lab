@@ -22,33 +22,6 @@ export class Gallery extends Component {
         this.props.setImageData(data)
         window.scrollTo(0, 0);
     }
-    // imageLoop1 = () => {
-    //     let count = Math.floor(this.props.filterData.length / 3)
-    //     let list = []
-
-    //     for (let i = 0; i < count; i++) {
-    //         list.push(this.props.filterData[i])
-    //     }
-    //     return list;
-    // }
-    // imageLoop2 = () => {
-    //     let count = Math.floor(this.props.filterData.length / 3)
-    //     let list = []
-
-    //     for (let i = count; i < (count * 2); i++) {
-    //         list.push(this.props.filterData[i])
-    //     }
-    //     return list;
-    // }
-    // imageLoop3 = () => {
-    //     let count = Math.floor(this.props.filterData.length / 3)
-    //     let list = []
-
-    //     for (let i = (count * 2); i < this.props.filterData.length; i++) {
-    //         list.push(this.props.filterData[i])
-    //     }
-    //     return list;
-    // }
 
     render() {
         const { filterData } = this.state
@@ -70,52 +43,7 @@ export class Gallery extends Component {
                                 </Col> )}
                         </Row>
                     }
-                    {/* {this.props.filterData !== undefined &&
-                        <Row style={{ margin: 'auto', width: "100%", padding: '50px', }}>
-                            {this.props.filterData.length <= 3 ?
-                                this.props.filterData.map((data) =>
-                                    <Col lg={4}>
-                                        <div className='frame1'>
-                                            <figure >
-                                                <img id={data.imageName} src={data.imageUrl} onClick={e => this.onClick(e, data)} width='100%' height='auto' />
-                                            </figure >
-                                            <div >{data.name} </div>
-                                        </div>
-                                    </Col>
-                                ) : <>
-                                    <Col lg={4}>
-                                        {this.imageLoop1().map((data) =>
-                                            <div className='frame1'>
-                                                <figure >
-                                                    <img id={data.imageName} src={data.imageUrl} onClick={e => this.onClick(e, data)} width='100%' height='auto' />
-                                                </figure >
-                                                <div >{data.name} </div>
-                                            </div>
-                                        )}
-                                    </Col>
-                                    <Col lg={4}>
-                                        {this.imageLoop2().map((data) =>
-                                            <div className='frame1'>
-                                                <figure >
-                                                    <img id={data.imageName} src={data.imageUrl} onClick={e => this.onClick(e, data)} width='100%' height='auto' />
-                                                </figure >
-                                                <div >{data.name} </div>
-                                            </div>
-                                        )}
-                                    </Col>
-                                    <Col lg={4}>
-                                        {this.imageLoop3().map((data) =>
-                                            <div className='frame1'>
-                                                <figure >
-                                                    <img id={data.imageName} src={data.imageUrl} onClick={e => this.onClick(e, data)} width='100%' height='auto' />
-                                                </figure >
-                                                <div >{data.name} </div>
-                                            </div>
-                                        )}
-                                    </Col>
-                                </>
-                            }
-                        </Row>} */}
+                  
                 </div>
             </>
         )

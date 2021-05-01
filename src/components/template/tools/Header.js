@@ -37,8 +37,8 @@ function Header() {
 
     return (
         <>
-            <Navbar variant="dark" sticky="top" style={{ backgroundColor: 'rgba(0,0,0, 0.7)', height: '80px', }}>
-                <Navbar.Brand > <img src={Logo2} style={{backgroundColor: 'rgba(0,0,0, 0.7)'}} /> </Navbar.Brand>
+            <Navbar variant="dark" sticky="top" style={{ backgroundColor: '#093266', height: '80px', opacity:'0.8' }}>
+                <Navbar.Brand > <img src={Logo2} style={{backgroundColor: '#093266'}} /> </Navbar.Brand>
                 <Navbar.Brand style={{ fontSize: '1.2em' }}> St.Mary's College (Autonomous)</Navbar.Brand>
                 <Nav className="ml-auto">
                     <Link className='nav-link' to="/"><i class="fa fa-home" style={{padding:'5px',}}></i>Home</Link>

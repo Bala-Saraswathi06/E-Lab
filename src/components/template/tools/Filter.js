@@ -118,7 +118,7 @@ export class Filter extends Component {
                     {lab === 'botany' ?
                         <>
                             <Row className='d-flex justify-content-center'>
-                                <p style={{ fontSize: '4em' }}> BOTANY - LABORATORY </p>
+                                <p style={{ fontSize: '4em' }}> BOTANY - MUSEUM </p>
                             </Row>
 
                             <Row className='d-flex justify-content-center'>
@@ -129,7 +129,7 @@ export class Filter extends Component {
                         </> :
                         <>
                             <Row className='d-flex justify-content-center'>
-                                <p style={{ fontSize: '4em' }}> ZOOLOGY - LABORATORY </p>
+                                <p style={{ fontSize: '4em' }}> ZOOLOGY - MUSEUM </p>
                             </Row>
                             <Row className='d-flex justify-content-center'>
                                 <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do consectetur adipiscing elit,sed do </p>

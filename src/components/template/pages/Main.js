@@ -16,7 +16,7 @@ function Main() {
 
             { lab === 'botany' ? <Redirect to='botany' /> :
                 lab === 'zoology' ? <Redirect to='zoology' /> :
-                    <div style={{backgroundColor:'black'}}>
+                    <div  style={{backgroundColor:'#E5F1FF'}}>
                         <Header />
                         <Slider setLab={setLab} />
                         <Content setLab={setLab} />

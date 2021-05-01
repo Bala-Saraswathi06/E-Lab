@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from 'react'
 import { Carousel, Button } from 'react-bootstrap'
 import {Link, Redirect} from 'react-router-dom'
-import Img1 from '../../../img/img-03.jpg'
+import Img1 from '../../../img/img-07.jpg'
 import Img2 from '../../../img/img-08.jpg'
 import Img3 from '../../../img/img-02.jpg'
 
@@ -10,7 +10,7 @@ function Slider(props) {
     return (
         <div style={{ position: 'relative', bottom: '80px' }}>
             <Carousel >
-                <Carousel.Item  interval={1200} >
+                <Carousel.Item  interval={1000} >
                     <img
                         style={{ height: 'auto', width: '100%' }}
                         className="d-block w-100"
@@ -19,10 +19,10 @@ function Slider(props) {
                     />
                     <Carousel.Caption style={{ bottom: '30%', textAlign: 'start', width: '45%' }} >
                         <div style={{ fontSize: '3em', fontFamily: '-moz-initial' }} >ST.MARY'S COLLEGE (AUTONOMOUS)</div>
-                        <Button id='main-button' variant='danger' size="lg" onClick={(e) => setLab('botany')}>View Botany Laboratory <i class="fa fa-angle-right" aria-hidden="true"></i> </Button>
+                        <Button id='main-button' variant='danger' size="lg" onClick={(e) => setLab('botany')}>View Botany Museum <i class="fa fa-angle-right" aria-hidden="true"></i> </Button>
                     </Carousel.Caption>
                 </Carousel.Item>
-                <Carousel.Item  interval={1200}  >
+                <Carousel.Item  interval={1000}  >
                     <img
                         style={{ height: 'auto', width: '100%' }}
                         className="d-block w-100"
@@ -31,7 +31,7 @@ function Slider(props) {
                     />
                     <Carousel.Caption style={{ bottom: '30%', textAlign: 'start', width: '45%' }} >
                         <div style={{ fontSize: '3em', fontFamily: '-moz-initial' }} >ST.MARY'S COLLEGE (AUTONOMOUS)</div>
-                        <Button id='main-button' variant='danger' size="lg" onClick={(e) => setLab('zoology')}> View Zoology Laboratory <i class="fa fa-angle-right" aria-hidden="true"></i> </Button>
+                        <Button id='main-button' variant='danger' size="lg" onClick={(e) => setLab('zoology')}> View Zoology Museum <i class="fa fa-angle-right" aria-hidden="true"></i> </Button>
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>

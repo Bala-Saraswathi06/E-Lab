@@ -41,7 +41,7 @@ class ImageContent extends Component {
         console.log(imageData, count, minCount, maxCount, filterData, 'imageData')
 
         return (
-            <div style={{ position: 'relative', bottom: '80px', marginTop: '80px', }}>
+            <div style={{ backgroundColor:'#E5F1FF', position: 'relative', bottom: '80px', marginTop: '80px', }}>
 
                 <div className='container'>
                     <Row>

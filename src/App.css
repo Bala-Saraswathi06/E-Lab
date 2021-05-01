@@ -1,15 +1,15 @@
 .parallax{
-  min-height: 600px;
+  min-height: 700px;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 #img1{
-  background-image: url('./img/img-03.jpg');
+  background-image: url('./img/img-05.jpg');
 }
 #img2{
-  background-image: url('./img/img-04.jpg');
+  background-image: url('./img/img-08.jpg');
 }
 .parallax div{
   position: absolute;
@@ -43,7 +43,7 @@
   padding: 15px;
   margin-top: 20px;
   /* box-shadow:3px 8px 16px 0px rgba(0,0,0,0.2) ; */
-  background-color: rgb(212, 211, 212);
+  background-color: #c7daf0;
   /* border: #c26b3f 10px solid; */
   /* outline: #532c18 5px inset; */
   /* margin:50px 20px */
@@ -74,9 +74,9 @@
   /* background-color: white; */
 }
 .filter{
-  background-color: black;
+  background-color: #093266;
   padding: 30px;
-  color: rgb(182, 178, 178);
+  color: white;
 }
 /* 
 .dropdown {
@@ -153,7 +153,7 @@
 .dropdown:hover .dropdown-content {display: block;}
 
 .footer{
-  background-color: black;
+  background-color: #093266;
   color:white;
   padding: 30px;
 }
@@ -191,8 +191,9 @@
   border-top: 1px solid white;
 } */
 #box{
-  border: 5px solid white ;
+  border: 5px solid #093266 ;
   padding: 20px;
+  margin: 20px;
 }
 #arrowButton{
   position: relative;
@@ -203,8 +204,8 @@
 /* %%%%%%%%%%%%%%%%%%%%%%%5 Form Style $$$$$$$$$$$$$$$$$$$$$$$ */
 .container{
   margin: auto;
-  width: 80;
-  margin-top: 30px;
+  width: 80%;
+  margin-top: 40px;
 }
 .icon-button{
   background-color: hsl(345, 95%, 43%);

@@ -19,20 +19,20 @@ function Content(props) {
         <div style={{ position: 'relative', bottom: '80px' }}>
             <div className='filter' >
                 <Row className='d-flex justify-content-center'>
-                    <p style={{ fontSize: '5em' }}> E - LABORATORY </p>
+                    <p style={{ fontSize: '5em' }}> E - MUSEUM </p>
                 </Row>
                 <Row className='d-flex justify-content-center'>
                     <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do consectetur adipiscing elit,sed do </p>
                     <p> Lorem ipsum dolor sit amet, sed do consectetur adipiscing elit,sed do </p>
                     <p> Lorem ipsum dolor sit  adipiscing elit, sed do consectetur adipiscing elit.</p>
                 </Row>
-                <hr style={{ color: 'grey', backgroundColor: 'grey', width: '60%' }}></hr>
+                <hr style={{ color: 'grey', backgroundColor: 'white', width: '60%' }}></hr>
                 <Row className='d-flex justify-content-center' >
-                    <Button variant='danger' onClick={(e) => setLab('botany')} style={{ margin: '10px' }} > Botany LABORATORY <i class="fa fa-angle-right" aria-hidden="true"></i> </Button>
-                    <Button variant='danger' onClick={(e) => setLab('zoology')} style={{ margin: '10px' }}> Zoology LABORATORY <i class="fa fa-angle-right" aria-hidden="true"></i> </Button>
+                    <Button variant='danger' onClick={(e) => setLab('botany')} style={{ margin: '10px' }} > Botany MUSEUM <i class="fa fa-angle-right" aria-hidden="true"></i> </Button>
+                    <Button variant='danger' onClick={(e) => setLab('zoology')} style={{ margin: '10px' }}> Zoology MUSEUM <i class="fa fa-angle-right" aria-hidden="true"></i> </Button>
                 </Row>
             </div>
-            <div style={{ backgroundColor: 'white', padding: '50px' }}>
+            <div style={{  padding: '50px' }}>
                 <Row style={{ margin: 'auto', width: "90%", }}>
                     <Col lg='6'>
                         <div>
@@ -49,7 +49,7 @@ function Content(props) {
                                 adipiscing elit, sed do consectetur adipiscing elit,sed do,Lorem ipsum dolor sit amet,
                                 consectetur.
                                 adipiscing elit,sed do </p>
-                            <Button variant='danger' onClick={(e) => setLab('botany')}> View LABORATORY <i class="fa fa-angle-right" aria-hidden="true"></i> </Button>
+                            <Button variant='danger' onClick={(e) => setLab('botany')}> View MUSEUM <i class="fa fa-angle-right" aria-hidden="true"></i> </Button>
                         </Row>
                     </Col>
                 </Row>
@@ -62,7 +62,7 @@ function Content(props) {
                                 adipiscing elit, sed do consectetur adipiscing elit,
                                 consectetur. sed do consectetur adipiscing elit,sed do,Lorem ipsum dolor sit amet,
                         consectetur adipiscing elit, sed do.</p>
-                            <Button variant='danger' onClick={(e) => setLab('zoology')}> View LABORATORY <i class="fa fa-angle-right" aria-hidden="true"></i> </Button>
+                            <Button variant='danger' onClick={(e) => setLab('zoology')}> View MUSEUM <i class="fa fa-angle-right" aria-hidden="true"></i> </Button>
                         </Row>
                     </Col>
                     <Col lg='6'>
