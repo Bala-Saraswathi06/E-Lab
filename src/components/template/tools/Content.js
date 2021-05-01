@@ -19,7 +19,7 @@ function Content(props) {
         <div style={{ position: 'relative', bottom: '80px' }}>
             <div className='filter' >
                 <Row className='d-flex justify-content-center'>
-                    <p style={{ fontSize: '5em' }}> E - MUSEUM </p>
+                    <p style={{ fontSize: '5em' }}> E - LABORATORY </p>
                 </Row>
                 <Row className='d-flex justify-content-center'>
                     <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do consectetur adipiscing elit,sed do </p>
@@ -28,8 +28,8 @@ function Content(props) {
                 </Row>
                 <hr style={{ color: 'grey', backgroundColor: 'grey', width: '60%' }}></hr>
                 <Row className='d-flex justify-content-center' >
-                    <Button variant='danger' onClick={(e) => setLab('botany')} style={{ margin: '10px' }} > Botany Museum <i class="fa fa-angle-right" aria-hidden="true"></i> </Button>
-                    <Button variant='danger' onClick={(e) => setLab('zoology')} style={{ margin: '10px' }}> Zoology Museum <i class="fa fa-angle-right" aria-hidden="true"></i> </Button>
+                    <Button variant='danger' onClick={(e) => setLab('botany')} style={{ margin: '10px' }} > Botany LABORATORY <i class="fa fa-angle-right" aria-hidden="true"></i> </Button>
+                    <Button variant='danger' onClick={(e) => setLab('zoology')} style={{ margin: '10px' }}> Zoology LABORATORY <i class="fa fa-angle-right" aria-hidden="true"></i> </Button>
                 </Row>
             </div>
             <div style={{ backgroundColor: 'white', padding: '50px' }}>
@@ -48,9 +48,8 @@ function Content(props) {
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                                 adipiscing elit, sed do consectetur adipiscing elit,sed do,Lorem ipsum dolor sit amet,
                                 consectetur.
-                                sed do,Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit, sed do consectetur adipiscing elit,sed do </p>
-                            <Button variant='danger' onClick={(e) => setLab('botany')}> View Museum <i class="fa fa-angle-right" aria-hidden="true"></i> </Button>
+                                adipiscing elit,sed do </p>
+                            <Button variant='danger' onClick={(e) => setLab('botany')}> View LABORATORY <i class="fa fa-angle-right" aria-hidden="true"></i> </Button>
                         </Row>
                     </Col>
                 </Row>
@@ -60,10 +59,10 @@ function Content(props) {
                             <p style={{ fontSize: '3em' }}> ZOOLOGY MUSEUM </p>
                             <p style={{ fontSize: '1.3em', textAlign: 'center' }}>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                adipiscing elit, sed do consectetur adipiscing elit,sed do,Lorem ipsum dolor sit amet,
+                                adipiscing elit, sed do consectetur adipiscing elit,
                                 consectetur. sed do consectetur adipiscing elit,sed do,Lorem ipsum dolor sit amet,
                         consectetur adipiscing elit, sed do.</p>
-                            <Button variant='danger' onClick={(e) => setLab('zoology')}> View Museum <i class="fa fa-angle-right" aria-hidden="true"></i> </Button>
+                            <Button variant='danger' onClick={(e) => setLab('zoology')}> View LABORATORY <i class="fa fa-angle-right" aria-hidden="true"></i> </Button>
                         </Row>
                     </Col>
                     <Col lg='6'>

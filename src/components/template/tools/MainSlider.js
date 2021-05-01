@@ -19,7 +19,7 @@ function Slider(props) {
                     />
                     <Carousel.Caption style={{ bottom: '30%', textAlign: 'start', width: '45%' }} >
                         <div style={{ fontSize: '3em', fontFamily: '-moz-initial' }} >ST.MARY'S COLLEGE (AUTONOMOUS)</div>
-                        <Button id='main-button' variant='danger' size="lg" onClick={(e) => setLab('botany')}>View Botany Museum <i class="fa fa-angle-right" aria-hidden="true"></i> </Button>
+                        <Button id='main-button' variant='danger' size="lg" onClick={(e) => setLab('botany')}>View Botany Laboratory <i class="fa fa-angle-right" aria-hidden="true"></i> </Button>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item  interval={1200}  >
@@ -31,7 +31,7 @@ function Slider(props) {
                     />
                     <Carousel.Caption style={{ bottom: '30%', textAlign: 'start', width: '45%' }} >
                         <div style={{ fontSize: '3em', fontFamily: '-moz-initial' }} >ST.MARY'S COLLEGE (AUTONOMOUS)</div>
-                        <Button id='main-button' variant='danger' size="lg" onClick={(e) => setLab('zoology')}> View Zoology Museum <i class="fa fa-angle-right" aria-hidden="true"></i> </Button>
+                        <Button id='main-button' variant='danger' size="lg" onClick={(e) => setLab('zoology')}> View Zoology Laboratory <i class="fa fa-angle-right" aria-hidden="true"></i> </Button>
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
