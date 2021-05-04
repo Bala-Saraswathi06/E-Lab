@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Row, Col, Form, Card } from 'react-bootstrap'
-import Img1 from '../../../img/img-05.jpg'
 import Galley from './Gallery'
 import { Link } from 'react-router-dom'
 import { categoryRef, contentRef, imagesRef } from '../../../firebase/Firebase'

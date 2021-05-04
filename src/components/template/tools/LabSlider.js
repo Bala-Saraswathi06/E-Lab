@@ -1,9 +1,6 @@
 import { React, useState, useEffect } from 'react'
 import { Carousel, Button } from 'react-bootstrap'
 import { Link, Redirect } from 'react-router-dom'
-import Img1 from '../../../img/img-03.jpg'
-import Img2 from '../../../img/img-08.jpg'
-import Img4 from '../../../img/img-04.jpg'
 
 function Slider(props) {
     const { lab } = props

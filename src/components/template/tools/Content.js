@@ -1,18 +1,9 @@
 import { React, useEffect, useState } from 'react'
 import { Row, Col, Button, Carousel } from 'react-bootstrap'
-import Img1 from '../../../img/img-01.jpg'
-import Img2 from '../../../img/img-02.jpg'
-import Img3 from '../../../img/img-03.jpg'
 import Img4 from '../../../img/img-04.jpg'
 import Img5 from '../../../img/img-05.jpg'
-import Img6 from '../../../img/img-06.jpg'
-import Img7 from '../../../img/img-07.jpg'
-import Img8 from '../../../img/img-08.jpg'
-import Img9 from '../../../img/img-09.jpg'
 
 function Content(props) {
-
-    const array = [Img1, Img2, Img3, Img4, Img5, Img6, Img7, Img8, Img9]
     const { setLab } = props
 
     return (
